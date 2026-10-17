@@ -1,0 +1,125 @@
+:root {
+    --bg-main: #F5F5DC;
+    --brand-primary: #6D8196;
+    --brand-dark: #4b5d6e;
+    --text-dark: #2c3e50;
+    --surface-white: #ffffff;
+    --border-light: #e1e8ed;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body { background-color: var(--bg-main); color: var(--text-dark); padding: 20px; }
+
+.app-container {
+    max-width: 1400px; margin: 0 auto; background: var(--surface-white);
+    border-radius: 16px; padding: 30px; box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+}
+
+.app-header { text-align: center; margin-bottom: 40px; }
+.app-header h1 { color: var(--brand-primary); font-weight: 600; }
+.app-header p { color: #666; }
+
+/* ==========================================
+   LAYOUT KANAN KIRI (Panel Utama)
+   ========================================== */
+.top-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* ==========================================
+   PANEL KIRI (Hexagon & Inputs)
+   ========================================== */
+.control-group { margin-bottom: 30px; }
+.control-group label { display: block; margin-bottom: 15px; font-weight: 600; font-size: 1.1rem; }
+
+/* Heksagon 101 Warna */
+.hexagon-gallery { display: flex; flex-direction: column; align-items: center; padding: 10px 0; margin-bottom: 10px; }
+.hex-row { display: flex; justify-content: center; margin-top: -7px; }
+.hex-row:first-child { margin-top: 0; }
+.hex-swatch {
+    width: 26px; height: 30px; cursor: pointer; margin: 0 1px; position: relative; z-index: 1;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: transform 0.2s, z-index 0.2s;
+}
+.hex-swatch:hover { transform: scale(1.6); z-index: 10; }
+
+/* Input Manual */
+.input-row { display: flex; gap: 20px; border-top: 1px solid var(--border-light); padding-top: 20px; }
+.input-col { flex: 1; }
+.input-col label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.95rem; }
+input[type="color"] { width: 100%; height: 45px; border: none; cursor: pointer; border-radius: 8px; }
+.text-input-wrapper { display: flex; gap: 10px; }
+.text-input-wrapper input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 8px; }
+.text-input-wrapper button { background: var(--brand-primary); color: white; border: none; padding: 0 20px; border-radius: 8px; cursor: pointer; }
+
+/* ==========================================
+   PANEL KANAN (Split Preview & Box Sliders)
+   ========================================== */
+.comparison-card { background: #f8f9fa; border: 1px solid var(--border-light); border-radius: 12px; padding: 15px; margin-bottom: 25px; }
+.split-preview { display: flex; flex-direction: column; border-radius: 8px; overflow: hidden; margin-bottom: 15px; box-shadow: inset 0 2px 6px rgba(0,0,0,0.15); }
+.color-half { padding: 25px 20px; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.2s; }
+.half-label { font-size: 0.95rem; font-weight: 500; opacity: 0.9; }
+.half-hex { font-weight: 600; font-size: 1.2rem; letter-spacing: 1px; }
+
+#use-rgb-btn { background: var(--brand-primary); color: white; border: none; padding: 12px; border-radius: 6px; font-size: 0.95rem; cursor: pointer; width: 100%; font-weight: 500; transition: 0.2s; }
+#use-rgb-btn:hover { background: var(--brand-dark); }
+
+/* SLIDER KOTAK LANGSUNG (Tampak 3 Kolom) */
+.rgb-box-container { background: #f8f9fa; padding: 20px; border-radius: 12px; border: 1px solid var(--border-light); }
+.rgb-main-label { display: block; margin-bottom: 15px; font-weight: 600; font-size: 1.1rem; }
+
+.rgb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.rgb-header { display: flex; justify-content: space-between; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; }
+
+/* Menyulap Slider Bawaan Menjadi Kotak Warna */
+.box-slider {
+    -webkit-appearance: none; appearance: none; width: 100%; height: 50px;
+    border-radius: 6px; outline: none; cursor: pointer;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+}
+/* Tuas Slider (Garis vertikal putih) */
+.box-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 8px; height: 58px;
+    background: #ffffff; border: 2px solid #333; border-radius: 4px;
+    cursor: ew-resize; box-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+.box-slider::-moz-range-thumb {
+    width: 8px; height: 58px; background: #ffffff; border: 2px solid #333; border-radius: 4px;
+    cursor: ew-resize; box-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+
+/* ==========================================
+   PANEL BAWAH (Kombinasi & Tabel)
+   ========================================== */
+.section-title { color: var(--brand-primary); margin-bottom: 20px; font-size: 1.4rem; padding-bottom: 10px; border-bottom: 2px solid var(--border-light); }
+.combo-row-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
+.combo-group h3 { font-size: 1.05rem; color: #555; margin-bottom: 15px; }
+.large-palette-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+.large-color-box { height: 160px; border-radius: 12px; padding: 15px; display: flex; flex-direction: column; justify-content: flex-end; box-shadow: 0 4px 12px rgba(0,0,0,0.08); cursor: pointer; transition: transform 0.2s; border: 1px solid rgba(0,0,0,0.05); }
+.large-color-box:hover { transform: translateY(-5px); }
+.large-color-details { background: rgba(255, 255, 255, 0.9); padding: 8px; border-radius: 8px; text-align: center; }
+.large-color-details strong { display: block; font-size: 1rem; }
+
+.table-wrapper { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
+th { background: #f8f9fa; font-weight: 600; color: #444; }
+
+/* ==========================================
+   MEDIA QUERIES (Responsif)
+   ========================================== */
+@media (max-width: 1024px) {
+    .top-layout { grid-template-columns: 1fr; gap: 20px; }
+    .combo-row-container { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+    .input-row { flex-direction: column; }
+}
+@media (max-width: 480px) {
+    .app-container { padding: 15px; }
+    .rgb-grid { grid-template-columns: 1fr; } /* RGB bertumpuk di layar sangat kecil */
+    .color-half { flex-direction: column; align-items: flex-start; gap: 10px; }
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMANSTUDIO Color Toolkit Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- HEADER APLIKASI -->
+        <header class="app-header">
+            <h1>OMANSTUDIO Color Toolkit</h1>
+            <p>Pilih warna dasar, sesuaikan RGB, dan temukan kombinasi harmoni warna untuk desain Anda.</p>
+        </header>
+
+        <!-- KONTROL UTAMA: Layout Kanan Kiri -->
+        <main class="top-layout">
+            
+            <!-- PANEL KIRI: Pick a Color & Manual Input -->
+            <section class="left-panel">
+                <div class="control-group">
+                    <label>Pick a Color (Pilih Cepat):</label>
+                    <div class="hexagon-gallery" id="quick-picks">
+                        <!-- Heksagon 101 Warna via JS -->
+                    </div>
+                </div>
+
+                <!-- Input Manual Bersandingan -->
+                <div class="input-row">
+                    <div class="input-col">
+                        <label for="base-color-picker">Atau Pilih Manual:</label>
+                        <input type="color" id="base-color-picker" value="#6D8196">
+                    </div>
+                    <div class="input-col">
+                        <label for="color-text-input">Atau Input Kode (HEX/RGB):</label>
+                        <div class="text-input-wrapper">
+                            <input type="text" id="color-text-input" value="#6D8196">
+                            <button id="apply-text-btn">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PANEL KANAN: Preview Split & RGB Box Sliders -->
+            <section class="right-panel">
+                
+                <!-- PREVIEW BERSANDINGAN (Atas-Bawah) -->
+                <div class="comparison-card">
+                    <div class="split-preview">
+                        <!-- Bagian Atas: Warna Asli -->
+                        <div class="color-half" id="original-display">
+                            <span class="half-label">Warna Pilihan Asli</span>
+                            <span class="half-hex" id="original-hex">#6D8196</span>
+                        </div>
+                        <!-- Bagian Bawah: Hasil Atur RGB -->
+                        <div class="color-half" id="rgb-display">
+                            <span class="half-label">Hasil Atur RGB</span>
+                            <span class="half-hex" id="rgb-hex">#6D8196</span>
+                        </div>
+                    </div>
+                    <button id="use-rgb-btn">Gunakan Hasil Warna Ini</button>
+                </div>
+
+                <!-- RGB BOX SLIDERS (3 Kolom) -->
+                <div class="rgb-box-container">
+                    <label class="rgb-main-label">Atur RGB secara manual:</label>
+                    <div class="rgb-grid">
+                        <!-- Red Slider -->
+                        <div class="rgb-col">
+                            <div class="rgb-header"><span>Red</span> <span id="val-r">109</span></div>
+                            <input type="range" id="slider-r" min="0" max="255" value="109" class="box-slider">
+                        </div>
+                        <!-- Green Slider -->
+                        <div class="rgb-col">
+                            <div class="rgb-header"><span>Green</span> <span id="val-g">129</span></div>
+                            <input type="range" id="slider-g" min="0" max="255" value="129" class="box-slider">
+                        </div>
+                        <!-- Blue Slider -->
+                        <div class="rgb-col">
+                            <div class="rgb-header"><span>Blue</span> <span id="val-b">150</span></div>
+                            <input type="range" id="slider-b" min="0" max="255" value="150" class="box-slider">
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+        <!-- PANEL BAWAH: Kombinasi & Gradasi -->
+        <section class="bottom-layout">
+            <div class="combinations-wrapper">
+                <h2 class="section-title">Kombinasi Warna (Referensi Desain)</h2>
+                <div class="combo-row-container">
+                    <div class="combo-group">
+                        <h3>Kombinasi 2 Warna (Complementary)</h3>
+                        <div class="large-palette-row" id="combo-2"></div>
+                    </div>
+                    <div class="combo-group">
+                        <h3>Kombinasi 3 Warna (Analogous)</h3>
+                        <div class="large-palette-row" id="combo-3"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <h2 class="section-title">Tabel Gradasi (Lightness)</h2>
+                <table id="lightness-table">
+                    <thead>
+                        <tr>
+                            <th>Light %</th>
+                            <th>HEX</th>
+                            <th>RGB</th>
+                            <th>Rekomendasi Teks</th>
+                        </tr>
+                    </thead>
+                    <tbody><!-- Digenerate via JS --></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/tinycolor.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
